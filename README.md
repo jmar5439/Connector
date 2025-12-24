@@ -57,3 +57,6 @@ Contains implementations for communication protocols a connector might use, such
 ## Contributing
 
 See [how to contribute](https://github.com/eclipse-edc/eclipse-edc.github.io/blob/main/CONTRIBUTING.md).
+
+
+./gradlew clean shadowJar

@@ -42,9 +42,11 @@ dsp-tck = "1.0.0-RC4"
 dcp-tck = "1.0.0-RC4"
 junit = "1.13.4"
 wiremock = "3.13.1"
+logback = "1.4.11"
 
 [libraries]
 edc-boot = { module = "org.eclipse.edc:boot", version.ref = "edc" }
+edc-bom-controlplane-sql = { module = "org.eclipse.edc:controlplane-feature-sql-bom", version.ref = "edc" }
 edc-bom-controlplane-base = { module = "org.eclipse.edc:controlplane-base-bom", version.ref = "edc" }
 edc-bom-dataplane-base = { module = "org.eclipse.edc:dataplane-base-bom", version.ref = "edc" }
 edc-configuration-filesystem = { module = "org.eclipse.edc:configuration-filesystem", version.ref = "edc" }
@@ -94,6 +96,7 @@ edc-validator-data-address-http-data = { module = "org.eclipse.edc:validator-dat
 # edc-sql-policy-store = { module = "org.eclipse.edc:sql-policy-store", version.ref = "edc" }
 # edc-sql-transfer-process-store = { module = "org.eclipse.edc:sql-transfer-process-store", version.ref = "edc" }
 
+edc-sql-lib= { module = "org.eclipse.edc:sql-lib", version.ref = "edc" }
 # SQL Core
 edc-sql-core = { module = "org.eclipse.edc:sql-core", version.ref = "edc" }
 edc-sql-pool = { module = "org.eclipse.edc:sql-pool-apache-commons", version.ref = "edc" }
@@ -106,8 +109,10 @@ edc-contract-definition-store-sql = { module = "org.eclipse.edc:contract-definit
 edc-transfer-process-store-sql = { module = "org.eclipse.edc:transfer-process-store-sql", version.ref = "edc" }
 edc-data-plane-store-sql = { module = "org.eclipse.edc:data-plane-store-sql", version.ref = "edc" }
 edc-data-plane-instance-store-sql = { module = "org.eclipse.edc:data-plane-instance-store-sql", version.ref = "edc" }
-
-
+edc-transaction-datasource-spi = { module = "org.eclipse.edc:transaction-datasource-spi", version.ref = "edc" }
+edc-control-plane-sql = { module = "org.eclipse.edc:control-plane-sql", version.ref = "edc" }
+edc-sql-bootstrapper = { module = "org.eclipse.edc:sql-bootstrapper", version.ref = "edc" }
+edc-sql-lease = { module = "org.eclipse.edc:sql-lease", version.ref = "edc" }
 
 
 edc-web-spi = { module = "org.eclipse.edc:web-spi", version.ref = "edc" }
@@ -203,6 +208,8 @@ dcp-testcases = { module = "org.eclipse.dataspacetck.dcp:dcp-testcases", version
 dcp-tck-runtime = { module = "org.eclipse.dataspacetck.dsp:tck-runtime", version.ref = "dcp-tck" }
 dcp-system = { module = "org.eclipse.dataspacetck.dcp:dcp-system", version.ref = "dcp-tck" }
 dsp-core = { module = "org.eclipse.dataspacetck.dsp:core", version.ref = "dcp-tck" }
+
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 [bundles]
 jackson = ["jackson-annotations", "jackson-databind"]

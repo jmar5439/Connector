@@ -19,6 +19,7 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.edc.transaction.datasource.spi)
     implementation(libs.edc.runtime.core)
     implementation(libs.edc.connector.core)
     implementation(libs.edc.control.api.configuration)
@@ -40,14 +41,18 @@ dependencies {
 
     implementation(libs.edc.data.plane.selector.api)
     implementation(libs.edc.data.plane.selector.core)
-
+    implementation(libs.edc.sql.lib)
+    //runtimeOnly(libs.edc.bom.controlplane.sql)
     implementation(libs.edc.data.plane.self.registration)
     implementation(libs.edc.data.plane.signaling.api)
     implementation(libs.edc.data.plane.core)
     implementation(libs.edc.data.plane.http)
     implementation(libs.edc.data.plane.iam)
 
+    implementation(libs.edc.sql.bootstrapper)
+    implementation(libs.edc.sql.lease)  
     
+    implementation(libs.edc.control.plane.sql)
 
    // SQL Core and Transaction Support
     implementation(libs.edc.sql.core)
@@ -65,12 +70,14 @@ dependencies {
     // or for instance tracking:
     implementation(libs.edc.data.plane.instance.store.sql)
 
+    implementation(libs.logback.classic)
+
 
     
     
     
  
-    implementation(libs.postgres)
+    runtimeOnly(libs.postgres)
 }
 
 application {
@@ -85,4 +92,5 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     archiveFileName.set("connector.jar")
     dependsOn(distTar, distZip)
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    configurations = listOf(project.configurations.runtimeClasspath.get())
 }
