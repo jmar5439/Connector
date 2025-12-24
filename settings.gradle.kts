@@ -29,6 +29,8 @@ pluginManagement {
     }
 }
 
+include(":basic:basic-04-my-new-connector")
+
 // EDC core modules --------------------------------------------------------------------------------
 include(":core:common:boot")
 include(":core:common:connector-core")
