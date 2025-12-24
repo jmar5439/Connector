@@ -33,7 +33,7 @@ dependencies {
     testImplementation(libs.postgres)
     testImplementation(libs.restAssured)
     testImplementation(libs.awaitility)
-    testImplementation(libs.kafkaClients)
+    testImplementation(libs.kafka.clients)
     testImplementation(libs.testcontainers.junit)
     testImplementation(libs.testcontainers.kafka)
     testImplementation(libs.testcontainers.postgres)

@@ -10,7 +10,7 @@ dependencies {
     implementation(project(":core:common:lib:validator-lib"))
     implementation(project(":core:data-plane:data-plane-util"))
     implementation(project(":extensions:common:validator:validator-data-address-kafka"))
-    implementation(libs.kafkaClients)
+    implementation(libs.kafka.clients)
 
     testImplementation(project(":core:common:junit"))
     testImplementation(libs.restAssured)
