@@ -47,11 +47,27 @@ dependencies {
     implementation(libs.edc.data.plane.http)
     implementation(libs.edc.data.plane.iam)
 
-    / EDC SQL Persistence
+   // SQL Core and Transaction Support
     implementation(libs.edc.sql.core)
+    implementation(libs.edc.sql.pool)
+    implementation(libs.edc.transaction.local)
+    
+    // SQL Store Implementations for Control Plane
     implementation(libs.edc.sql.assetindex)
-    implementation(libs.edc.sql.policy.store)
-    implementation(libs.edc.sql.transfer.process.store)
+    implementation(libs.edc.policy.definition.store.sql)  // Use this EXACT alias
+    implementation(libs.edc.contract.definition.store.sql)
+    implementation(libs.edc.transfer.process.store.sql)
+
+ 
+    implementation(libs.edc.dataplane.store.sql)
+    // or for instance tracking:
+    implementation(libs.edc.dataplane.instance.store.sql)
+
+
+    
+    
+    
+ 
     implementation(libs.postgres)
 }
 

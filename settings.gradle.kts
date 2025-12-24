@@ -29,6 +29,8 @@ pluginManagement {
     }
 }
 
+include(":transfer:transfer-00-prerequisites:connector")
+
 // EDC core modules --------------------------------------------------------------------------------
 include(":core:common:boot")
 include(":core:common:connector-core")
