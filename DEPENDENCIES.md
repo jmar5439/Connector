@@ -1,0 +1,1 @@
+https://central.sonatype.com/artifact/org.eclipse.edc/control-plane-core/0.15.0/dependents

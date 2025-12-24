@@ -22,24 +22,22 @@ plugins {
 
 dependencies {
 
-    implementation(libs.edc.boot)
+    implementation(libs.edc.runtime.core)
     implementation(libs.edc.connector.core)
-
-    implementation(libs.edc.http)
-    // Control plane core modules
-    implementation(libs.edc.control.plane.core)
+    implementation(libs.edc.control.api.configuration)
     implementation(libs.edc.control.plane.api.client)
-    
-    // Management API
-    implementation(libs.edc.management.api)
-
-    
-    
-    // DSP (Dataspace Protocol) 
+    implementation(libs.edc.control.plane.api)
+    implementation(libs.edc.control.plane.core)
+    implementation(libs.edc.token.core)
     implementation(libs.edc.dsp)
+    implementation(libs.edc.http)
+    implementation(libs.edc.configuration.filesystem)
+    implementation(libs.edc.iam.mock)
+    implementation(libs.edc.management.api)
+    
     // SQL persistence for control plane
      // Use the BOM (Bill of Materials) that includes all SQL dependencies
-    implementation(project(":dist:bom:controlplane-feature-sql-bom"))
+    implementation(platform(project(":dist:bom:controlplane-feature-sql-bom")))
     // PostgreSQL driver (or use H2 for testing)
     runtimeOnly(libs.postgres)
     // OR for H2 (in-memory testing):
