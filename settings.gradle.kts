@@ -302,7 +302,6 @@ include(":spi:control-plane:protocol-version-spi")
 
 include(":spi:data-plane:data-plane-spi")
 include(":spi:data-plane:data-plane-http-spi")
-include(":spi:data-plane:data-plane-iam-spi")
 
 include(":spi:data-plane-selector:data-plane-selector-spi")
 include(":spi:policy-monitor:policy-monitor-spi")
