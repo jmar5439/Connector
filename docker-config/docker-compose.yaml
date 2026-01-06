@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: edc-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: edc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: edc123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./schema:/docker-entrypoint-initdb.d
+    networks:
+      - edc-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  connector:
+    build:
+      context: .
+      dockerfile: transfer/transfer-00-prerequisites/connector/Dockerfile
+    container_name: edc-connector-provider
+    ports:
+      - "19191:19191"      # Main API
+      - "19193:19193"      # Management API
+      - "19194:19194"      # Protocol
+      - "19291:19291"      # Public/Catalog
+      - "19192:19192"      # Control plane
+      - "19195:19195"      # Version
+    environment:
+      - EDC_DATASOURCE_DEFAULT_URL=jdbc:postgresql://postgres:5432/edc
+      - EDC_DATASOURCE_DEFAULT_USER=postgres
+      - EDC_DATASOURCE_DEFAULT_PASSWORD=edc123
+      - EDC_PARTICIPANT_ID=provider
+      - EDC_DSP_CALLBACK_ADDRESS=http://connector:19194/protocol
+      - EDC_WEB_HTTP_MGMT_ENABLED=true
+      - EDC_WEB_HTTP_PUBLIC_ENABLED=true
+      - EDC_WEB_HTTP_CONTROL_ENABLED=true
+      - EDC_API_AUTH_KEY=optional  # Disable auth for testing
+    networks:
+      - edc-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  postgres_data:
+networks:
+  edc-network:
+    driver: bridge

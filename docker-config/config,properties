@@ -1,0 +1,52 @@
+web.http.path=/api
+web.http.port=${PORT}
+
+############################
+# ENABLE APIS (PATH ONLY)
+############################
+
+web.http.management.enabled=true
+web.http.management.path=/management
+
+web.http.control.enabled=true
+web.http.control.path=/control
+
+web.http.protocol.enabled=true
+web.http.protocol.path=/protocol
+
+web.http.public.enabled=true
+web.http.public.path=/public
+
+web.http.version.enabled=true
+web.http.version.path=/version
+
+############################
+# PARTICIPANT
+############################
+
+edc.participant.id=provider
+edc.dsp.callback.address=https://YOUR-APP-NAME.herokuapp.com/protocol
+
+############################
+# DATAPLANE
+############################
+
+edc.dataplane.api.public.baseurl=https://YOUR-APP-NAME.herokuapp.com/public
+
+############################
+# SECURITY
+############################
+
+edc.transfer.proxy.token.signer.privatekey.alias=private-key
+edc.transfer.proxy.token.verifier.publickey.alias=public-key
+
+############################
+# DATABASE (HEROKU POSTGRES)
+############################
+
+edc.datasource.default.url=jdbc:postgresql://localhost:5432/edc
+edc.datasource.default.user=postgres
+edc.datasource.default.password=edc123
+
+edc.datasource.default.pool.maximum-pool-size=20
+edc.datasource.default.pool.minimum-idle=5
